@@ -1,65 +1,38 @@
+import { onDelete, onEnter, OnLetter } from "./Utilities/KeyboardFunctions";
+import PropTypes from "prop-types";
 import { useContext } from "react";
 import { LevelContext } from "./Context";
 
-function Key(props) {
+function Key({ keyvalue, big }) {
   const { board, setBoard, currentAttemp, setCurrentAttemp } =
     useContext(LevelContext);
-
   const selectLetter = () => {
-    let letter = props.keyvalue;
+    let letter = keyvalue;
     letter = letter.trim();
     if (letter == "Enter") {
-      if (currentAttemp.letterPosition !== 5) {
-        alert(currentAttemp.letterPosition);
-        alert("Please fill the word");
-      } else if (currentAttemp.attempt !== 4) {
-        setCurrentAttemp({
-          attempt: currentAttemp.attempt + 1,
-          letterPosition: 0,
-        });
-      } else {
-        alert("You have completed the level");
-      }
+      onEnter(board, setBoard, currentAttemp, setCurrentAttemp);
     } else if (letter == "Backspace") {
-      if (currentAttemp.letterPosition !== 0) {
-        const currentBoard = [...board];
-        currentBoard[currentAttemp.attempt][currentAttemp.letterPosition - 1] =
-          "";
-        setBoard(currentBoard);
-        setCurrentAttemp({
-          attempt: currentAttemp.attempt,
-          letterPosition: currentAttemp.letterPosition - 1,
-        });
-      } else if (currentAttemp.attempt !== 0) {
-        alert("you can't go back to the previous word");
-      }
+      onDelete(board, setBoard, currentAttemp, setCurrentAttemp);
     } else {
-      if (currentAttemp.letterPosition === 5) {
-        return;
-      }
-      const currentBoard = [...board];
-
-      currentBoard[currentAttemp.attempt][currentAttemp.letterPosition] =
-        letter;
-      setBoard(currentBoard);
-
-      setCurrentAttemp({
-        attempt: currentAttemp.attempt,
-        letterPosition: currentAttemp.letterPosition + 1,
-      });
+      OnLetter(letter, board, setBoard, currentAttemp, setCurrentAttemp);
     }
   };
 
   return (
     <div
       className="key"
-      id={props.big ? "big" : ""}
-      key={props.keyvalue}
+      id={big ? "big" : ""}
+      key={keyvalue}
       onClick={selectLetter}
     >
-      {props.keyvalue}
+      {keyvalue}
     </div>
   );
 }
 
 export default Key;
+
+Key.propTypes = {
+  keyvalue: PropTypes.string.isRequired,
+  big: PropTypes.bool,
+};
