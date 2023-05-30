@@ -21,12 +21,13 @@ function Keyboard() {
     let letter = e.key;
     letter = letter.trim();
     letter = letter.toLowerCase();
-    if (letter == "Enter") {
+    if (letter == "enter") {
       onEnter(board, setBoard, currentAttemp, setCurrentAttemp);
-    } else if (letter == "Backspace") {
+    } else if (letter == "backspace") {
       onDelete(board, setBoard, currentAttemp, setCurrentAttemp);
     } else {
-      //check if the key pressed is a letter
+      // alert("You pressed " + letter);
+
       const isAlphabetKey = /^[a-zA-Z]$/.test(e.key);
       if (!isAlphabetKey) return;
       OnLetter(letter, board, setBoard, currentAttemp, setCurrentAttemp);

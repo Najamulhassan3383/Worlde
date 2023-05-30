@@ -15,6 +15,9 @@ function App() {
     attempt: 0,
     letterPosition: 0,
   });
+  const [move, setMove] = useState(false);
+
+  const LetterToBe = "right";
 
   return (
     <LevelContext.Provider
@@ -26,6 +29,7 @@ function App() {
         onDelete,
         onEnter,
         OnLetter,
+        LetterToBe,
       }}
     >
       <div className="App">

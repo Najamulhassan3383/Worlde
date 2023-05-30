@@ -14,7 +14,7 @@ const onDelete = (board, setBoard, currentAttemp, setCurrentAttemp) => {
 
 const onEnter = (board, setBoard, currentAttemp, setCurrentAttemp) => {
   if (currentAttemp.letterPosition !== 5) {
-    alert(currentAttemp.letterPosition);
+    // alert(currentAttemp.letterPosition);
     alert("Please fill the word");
   } else if (currentAttemp.attempt !== 4) {
     setCurrentAttemp({
