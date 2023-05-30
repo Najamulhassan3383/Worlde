@@ -4,7 +4,11 @@ import Keyboard from "./Components/Keyboard";
 import { LevelContext } from "./Components/Context";
 import { boardDefault } from "./Components/Words";
 import { useState } from "react";
-
+import {
+  OnLetter,
+  onEnter,
+  onDelete,
+} from "./Components/Utilities/KeyboardFunctions";
 function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttemp, setCurrentAttemp] = useState({
@@ -14,7 +18,15 @@ function App() {
 
   return (
     <LevelContext.Provider
-      value={{ board, setBoard, currentAttemp, setCurrentAttemp }}
+      value={{
+        board,
+        setBoard,
+        currentAttemp,
+        setCurrentAttemp,
+        onDelete,
+        onEnter,
+        OnLetter,
+      }}
     >
       <div className="App">
         <nav>
