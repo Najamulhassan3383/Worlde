@@ -13,18 +13,21 @@ const onDelete = (board, setBoard, currentAttemp, setCurrentAttemp) => {
 };
 
 const onEnter = (board, setBoard, currentAttemp, setCurrentAttemp) => {
-  if (currentAttemp.letterPosition !== 5) {
-    // alert(currentAttemp.letterPosition);
+  // if (words.has(word)) {
+  if (currentAttemp.attempt === 5) {
+    alert("You have reached the end of the board");
+  } else if (currentAttemp.letterPosition !== 5) {
     alert("Please fill the word");
-  } else if (currentAttemp.attempt !== 4) {
+  } else if (currentAttemp.attempt !== 5) {
     setCurrentAttemp({
       ...currentAttemp,
       attempt: currentAttemp.attempt + 1,
       letterPosition: 0,
     });
-  } else {
-    alert("You have completed the level");
   }
+  // } else {
+  //   alert("This is not a word");
+  // }
 };
 
 const OnLetter = (letter, board, setBoard, currentAttemp, setCurrentAttemp) => {

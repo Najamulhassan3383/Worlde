@@ -9,15 +9,16 @@ import {
   onEnter,
   onDelete,
 } from "./Components/Utilities/KeyboardFunctions";
+
 function App() {
   const [board, setBoard] = useState(boardDefault);
   const [currentAttemp, setCurrentAttemp] = useState({
     attempt: 0,
     letterPosition: 0,
   });
-  const [move, setMove] = useState(false);
 
   const LetterToBe = "right";
+  // create the set of words for checking if the user is typing a correct word
 
   return (
     <LevelContext.Provider
